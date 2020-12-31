@@ -16,3 +16,7 @@ header {
     color: black;
     align-items: flex-end;
 }
+
+footer {
+    text-align: center;
+}
