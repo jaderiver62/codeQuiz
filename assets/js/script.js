@@ -2,7 +2,7 @@ var pageContentEl = document.querySelector("#page-content");
 var highScoresEl = document.querySelector("#scores");
 var timerEl = document.querySelector("#timer");
 var startBtn = document.querySelector("#start-btn");
-var buttonTry = document.getElementById("start-btn");
+
 
 var quizStart = function(event) {
     //  var targetEl = event.target;
@@ -27,4 +27,4 @@ function endQuiz() {
     pageContentEl.innerHTML = "!! Insert End Code Here !!";
 }
 startBtn.addEventListener("click", quizStart);
-buttonTry.onclick = quizTimer;
+startBtn.onclick = quizTimer;
