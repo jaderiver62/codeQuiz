@@ -4,19 +4,19 @@ var timerEl = document.querySelector("#timer");
 var startBtn = document.querySelector("#start-btn");
 
 var myQuestions = [question1 = {
-    q: "What is this question?",
+    currentQuestion: "What is this question?",
     a: "a",
     b: "b",
     c: "c",
     answer: "a"
 }, question2 = {
-    q: "What is this question?",
+    currentQuestion: "What is this question?",
     a: "a",
     b: "b",
     c: "c",
     answer: "b"
 }, question3 = {
-    q: "What is this question?",
+    currentQuestion: "What is this question?",
     a: "a",
     b: "b",
     c: "c",
@@ -29,7 +29,9 @@ var quizStart = function(event) {
     //  var targetEl = event.target;
     // TO DO : Write questions and function to switch between them
     // pageContentEl.innerHTML = 
-    pageContentEl.textContent = "buzz.";
+
+    pageContentEl.innerHTML = "<h3>" + myQuestions[0].currentQuestion + "</h3>" +
+        "<br>" + myQuestions[0].a + "<br>" + myQuestions[0].b + "<br>" + myQuestions[0].c;
 }
 
 function quizTimer() {
