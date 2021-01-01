@@ -13,7 +13,7 @@ var quizStart = function(event) {
 function quizTimer() {
     var timeRemaining = 60;
     var timeInterval = setInterval(function() {
-        timerEl.textContent = "Timer: " + timeRemaining;
+        timerEl.textContent = "Time: " + timeRemaining;
         if (timeRemaining > 0) {
             timeRemaining--;
         } else {
