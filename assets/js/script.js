@@ -3,11 +3,33 @@ var highScoresEl = document.querySelector("#scores");
 var timerEl = document.querySelector("#timer");
 var startBtn = document.querySelector("#start-btn");
 
+var myQuestions = [question1 = {
+    q: "What is this question?",
+    a: "a",
+    b: "b",
+    c: "c",
+    answer: "a"
+}, question2 = {
+    q: "What is this question?",
+    a: "a",
+    b: "b",
+    c: "c",
+    answer: "b"
+}, question3 = {
+    q: "What is this question?",
+    a: "a",
+    b: "b",
+    c: "c",
+    answer: "c"
+}];
+
+
 
 var quizStart = function(event) {
     //  var targetEl = event.target;
     // TO DO : Write questions and function to switch between them
-    pageContentEl.innerHTML = "!! Insert Quiz Question Code Here !!";
+    // pageContentEl.innerHTML = 
+    pageContentEl.textContent = "buzz.";
 }
 
 function quizTimer() {
