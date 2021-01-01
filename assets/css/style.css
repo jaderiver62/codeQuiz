@@ -17,6 +17,10 @@ header {
     align-items: flex-end;
 }
 
+main {
+    text-align: center;
+}
+
 footer {
     text-align: center;
 }
