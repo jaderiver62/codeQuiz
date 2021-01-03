@@ -33,17 +33,20 @@ var myQuestions = [question1 = {
 
 
 var quizStart = function(event) {
-
     var index = 0;
-    while (index < 2) {
-        var thisQuestion = myQuestions[index];
-        pageContentEl.innerHTML = thisQuestion.currentQuestion + "<br>1.  " + thisQuestion.a + "<br>2.  " + thisQuestion.b + "<br>3.  " + thisQuestion.c + "<br>4.  " + thisQuestion.d;
-        var questionEl = pageContentEl.createElement("li");
-        index++;
+    questionSessionHandler(index);
+    //var questionEl = pageContentEl.createElement("li");
 
-    }
 }
+var questionSessionHandler = function(index) {
 
+    var thisQuestion = myQuestions[index];
+    pageContentEl.innerHTML = "<h1>" + thisQuestion.currentQuestion + "</h1><h4><br>1.  <button id='question-selection' type='submit'>" +
+        thisQuestion.a + "</button><br> 2. <button id='question-selection' type='submit'>" +
+        thisQuestion.b + "</button><br> 3. <button id='question-selection' type='submit'>" + thisQuestion.c + "</button><br> 4. <button id='question-selection' type='submit'>" +
+        thisQuestion.d + "</button> </h4>";
+
+}
 var checkAnswerHandler = function() {
 
 }
