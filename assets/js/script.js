@@ -41,10 +41,12 @@ var quizStart = function(event) {
 var questionSessionHandler = function(index) {
 
     var thisQuestion = myQuestions[index];
-    pageContentEl.innerHTML = "<h1>" + thisQuestion.currentQuestion + "</h1><h4><br>1.  <button id='question-selection' type='submit'>" +
-        thisQuestion.a + "</button><br> 2. <button id='question-selection' type='submit'>" +
-        thisQuestion.b + "</button><br> 3. <button id='question-selection' type='submit'>" + thisQuestion.c + "</button><br> 4. <button id='question-selection' type='submit'>" +
-        thisQuestion.d + "</button> </h4>";
+    pageContentEl.innerHTML = "<h1>" + thisQuestion.currentQuestion +
+        "</h1><h4><br><button id='question-selection' type='submit'>1.  " +
+        thisQuestion.a + "</button><br><button id='question-selection' type='submit'>2.  " +
+        thisQuestion.b + "</button><br><button id='question-selection' type='submit'>3.  " +
+        thisQuestion.c + "</button><br><button id='question-selection' type='submit'> 4.  " +
+        thisQuestion.d + "</button></h4>";
 
 }
 var checkAnswerHandler = function() {
