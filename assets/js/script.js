@@ -44,9 +44,33 @@ var quizStart = function(event) {
     pageFormEl.className = "question-content";
 
     var buttonEl = document.createElement("button");
-    buttonEl.textContent = "1.   " + myQuestions[index].a;
+    buttonEl.textContent = "1.  " + myQuestions[index].a;
     buttonEl.setAttribute("index-number", index);
+    buttonEl.setAttribute("value", myQuestions[index].a);
     pageFormEl.appendChild(buttonEl);
+    buttonEl.addEventListener("click", checkAnswerHandler);
+
+    var buttonEl = document.createElement("button");
+    buttonEl.textContent = "2.  " + myQuestions[index].b;
+    buttonEl.setAttribute("index-number", index);
+    buttonEl.setAttribute("value", myQuestions[index].b);
+    pageFormEl.appendChild(buttonEl);
+    buttonEl.addEventListener("click", checkAnswerHandler);
+
+    var buttonEl = document.createElement("button");
+    buttonEl.textContent = "3.  " + myQuestions[index].c;
+    buttonEl.setAttribute("index-number", index);
+    buttonEl.setAttribute("value", myQuestions[index].c);
+    pageFormEl.appendChild(buttonEl);
+    buttonEl.addEventListener("click", checkAnswerHandler);
+
+
+    var buttonEl = document.createElement("button");
+    buttonEl.textContent = "4.  " + myQuestions[index].d;
+    buttonEl.setAttribute("index-number", index);
+    buttonEl.setAttribute("value", myQuestions[index].d);
+    pageFormEl.appendChild(buttonEl);
+
     pageContentEl.appendChild(pageFormEl);
     buttonEl.addEventListener("click", checkAnswerHandler);
 
@@ -71,10 +95,21 @@ function endQuiz() {
 
 function checkAnswerHandler(event) {
     event.preventDefault();
-    var selectedAnswer = event.target.getAttribute("index-number");
+    var selectedAnswer = event.target.getAttribute("value");
     var correctAnswer = myQuestions[index].answer;
-    pageContentEl.innerHTML = correctAnswer + ": " + selectedAnswer;
+
+    var questionResult = "";
+
+    if (selectedAnswer === correctAnswer) {
+        questionResult = "Correct!";
+    } else {
+        questionResult = "Wrong!";
+    }
+    resultDiv.innerHTML = "<h3>" + questionResult + "</h3>";
+    /* correctAnswer + ": " + selectedAnswer; */
 }
+
+
 
 startBtn.onclick = quizTimer;
 if (startBtn) {
