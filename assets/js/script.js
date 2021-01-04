@@ -1,10 +1,14 @@
+var startBtn = document.getElementById("start-btn");
 var pageContentEl = document.querySelector("#page-content");
 var highScoresEl = document.querySelector("#scores");
 var timerEl = document.querySelector("#timer");
-var startBtn = document.getElementById("start-btn");
-var pageFormEl = document.querySelector("#page-form");
+var resultDiv = document.querySelector("#result-div");
+
+
+
 var index = 0;
 var score = 0;
+
 var myQuestions = [{
         currentQuestion: "What is this question?",
         a: "a",
@@ -34,16 +38,30 @@ var myQuestions = [{
 
 
 var quizStart = function(event) {
-    event.preventDefault();
-    var thisQuestion = myQuestions[index];
-    pageContentEl.innerHTML = "<h1>" + thisQuestion.currentQuestion;
-    pageFormEl.innerHTML = "</h1><h4><br><button id='question-selection' type='submit'>1.  " +
-        thisQuestion.a + "</button><br><button id='question-selection' type='submit'>2.  " +
-        thisQuestion.b + "</button><br><button id='question-selection' type='submit'>3.  " +
-        thisQuestion.c + "</button><br><button id='question-selection' type='submit'>4.  " +
-        thisQuestion.d + "</button></h4>";
-    pageContentEl.appendChild(pageFormEl);
-}
+        pageContentEl.innerHTML = "";
+        event.preventDefault();
+        var pageFormEl = document.createElement("div");
+        pageFormEl.className = "question-content";
+
+        var buttonEl = document.createElement("button");
+        buttonEl.textContent = "1.   " + myQuestions[index].a;
+        buttonEl.setAttribute("index-number", index);
+        pageFormEl.appendChild(buttonEl);
+        pageContentEl.appendChild(pageFormEl);
+        buttonEl.addEventListener("click", checkAnswerHandler);
+
+    }
+    /*    var thisQuestion = myQuestions[index];*/
+
+
+/*pageContentEl.innerHTML = "<h1>" + thisQuestion.currentQuestion;
+pageFormEl.innerHTML = "</h1><h4> <br> <input type = 'button' value = > 1. " +
+    thisQuestion.a + "</input><br><button id='answer-b' type='submit'>2.  " +
+    thisQuestion.b + "</button><br><button id='answer-c' type='submit'>3.  " +
+    thisQuestion.c + "</button><br><button id='answer-d' type='submit'>4.  " +
+    thisQuestion.d + "</button></h4>";}*/
+
+
 
 function quizTimer() {
     var timeRemaining = 60;
@@ -63,25 +81,13 @@ function endQuiz() {
 }
 
 function checkAnswerHandler(event) {
-    /*
-        var answerToCheck = document.getElementById("question-selection");
-        var footEl = document.getElementsByTagName("footer");
-        if (answerToCheck.matches(myQuestions[index].answer)) {
-            footEl.textContent = "Correct!";
-        } else { footEl.textContent = "Wrong!"; }
-        index++;
-        if (timeRemaining > 0 && index <= myQuestions.length) {
-            quizStart(onchange);
-        } else {
-            endQuiz();
-        }*/
-    event.preventDefault;
-    console.log(event);
-    pageContentEl.innerHTML = "What?"
+    event.preventDefault();
+    var selectedAnswer = event.target.getAttribute("index-number");
+    var correctAnswer = myQuestions[index].answer;
+    pageContentEl.innerHTML = correctAnswer + ": " + selectedAnswer;
 }
 
 startBtn.onclick = quizTimer;
-if (pageFormEl) {
-    pageFormEl.addEventListener("click", checkAnswerHandler, true);
+if (startBtn) {
+    startBtn.addEventListener("click", quizStart);
 }
-if (startBtn) { startBtn.addEventListener("click", quizStart, true); }
