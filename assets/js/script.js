@@ -38,41 +38,45 @@ var myQuestions = [{
 
 
 var quizStart = function(event) {
-    pageContentEl.innerHTML = "";
-    event.preventDefault();
-    var pageFormEl = document.createElement("div");
-    pageFormEl.className = "question-content";
+    if (index < myQuestions.length) {
+        pageContentEl.innerHTML = "";
+        event.preventDefault();
+        var pageFormEl = document.createElement("div");
+        pageFormEl.className = "question-content";
 
-    var buttonEl = document.createElement("button");
-    buttonEl.textContent = "1.  " + myQuestions[index].a;
-    buttonEl.setAttribute("index-number", index);
-    buttonEl.setAttribute("value", myQuestions[index].a);
-    pageFormEl.appendChild(buttonEl);
-    buttonEl.addEventListener("click", checkAnswerHandler);
+        var buttonEl = document.createElement("button");
+        buttonEl.textContent = "1.  " + myQuestions[index].a;
+        buttonEl.setAttribute("index-number", index);
+        buttonEl.setAttribute("value", myQuestions[index].a);
+        pageFormEl.appendChild(buttonEl);
+        buttonEl.addEventListener("click", checkAnswerHandler);
 
-    var buttonEl = document.createElement("button");
-    buttonEl.textContent = "2.  " + myQuestions[index].b;
-    buttonEl.setAttribute("index-number", index);
-    buttonEl.setAttribute("value", myQuestions[index].b);
-    pageFormEl.appendChild(buttonEl);
-    buttonEl.addEventListener("click", checkAnswerHandler);
+        var buttonEl = document.createElement("button");
+        buttonEl.textContent = "2.  " + myQuestions[index].b;
+        buttonEl.setAttribute("index-number", index);
+        buttonEl.setAttribute("value", myQuestions[index].b);
+        pageFormEl.appendChild(buttonEl);
+        buttonEl.addEventListener("click", checkAnswerHandler);
 
-    var buttonEl = document.createElement("button");
-    buttonEl.textContent = "3.  " + myQuestions[index].c;
-    buttonEl.setAttribute("index-number", index);
-    buttonEl.setAttribute("value", myQuestions[index].c);
-    pageFormEl.appendChild(buttonEl);
-    buttonEl.addEventListener("click", checkAnswerHandler);
+        var buttonEl = document.createElement("button");
+        buttonEl.textContent = "3.  " + myQuestions[index].c;
+        buttonEl.setAttribute("index-number", index);
+        buttonEl.setAttribute("value", myQuestions[index].c);
+        pageFormEl.appendChild(buttonEl);
+        buttonEl.addEventListener("click", checkAnswerHandler);
 
 
-    var buttonEl = document.createElement("button");
-    buttonEl.textContent = "4.  " + myQuestions[index].d;
-    buttonEl.setAttribute("index-number", index);
-    buttonEl.setAttribute("value", myQuestions[index].d);
-    pageFormEl.appendChild(buttonEl);
+        var buttonEl = document.createElement("button");
+        buttonEl.textContent = "4.  " + myQuestions[index].d;
+        buttonEl.setAttribute("index-number", index);
+        buttonEl.setAttribute("value", myQuestions[index].d);
+        pageFormEl.appendChild(buttonEl);
 
-    pageContentEl.appendChild(pageFormEl);
-    buttonEl.addEventListener("click", checkAnswerHandler);
+        pageContentEl.appendChild(pageFormEl);
+        buttonEl.addEventListener("click", checkAnswerHandler);
+    } else {
+        endQuiz();
+    }
 
 }
 
@@ -89,9 +93,6 @@ function quizTimer() {
     }, 1000);
 }
 
-function endQuiz() {
-    pageContentEl.innerHTML = "!! Insert End Code Here !!";
-}
 
 function checkAnswerHandler(event) {
     event.preventDefault();
@@ -107,10 +108,14 @@ function checkAnswerHandler(event) {
     }
     resultDiv.innerHTML = "<h3>" + questionResult + "</h3>";
     /* correctAnswer + ": " + selectedAnswer; */
+
+    index++;
+    pageContentEl.addEventListener("click", quizStart);
 }
 
-
-
+function endQuiz() {
+    pageContentEl.innerHTML = "!! Insert End Code Here !!";
+}
 startBtn.onclick = quizTimer;
 if (startBtn) {
     startBtn.addEventListener("click", quizStart);
