@@ -38,30 +38,19 @@ var myQuestions = [{
 
 
 var quizStart = function(event) {
-        pageContentEl.innerHTML = "";
-        event.preventDefault();
-        var pageFormEl = document.createElement("div");
-        pageFormEl.className = "question-content";
+    pageContentEl.innerHTML = "";
+    event.preventDefault();
+    var pageFormEl = document.createElement("div");
+    pageFormEl.className = "question-content";
 
-        var buttonEl = document.createElement("button");
-        buttonEl.textContent = "1.   " + myQuestions[index].a;
-        buttonEl.setAttribute("index-number", index);
-        pageFormEl.appendChild(buttonEl);
-        pageContentEl.appendChild(pageFormEl);
-        buttonEl.addEventListener("click", checkAnswerHandler);
+    var buttonEl = document.createElement("button");
+    buttonEl.textContent = "1.   " + myQuestions[index].a;
+    buttonEl.setAttribute("index-number", index);
+    pageFormEl.appendChild(buttonEl);
+    pageContentEl.appendChild(pageFormEl);
+    buttonEl.addEventListener("click", checkAnswerHandler);
 
-    }
-    /*    var thisQuestion = myQuestions[index];*/
-
-
-/*pageContentEl.innerHTML = "<h1>" + thisQuestion.currentQuestion;
-pageFormEl.innerHTML = "</h1><h4> <br> <input type = 'button' value = > 1. " +
-    thisQuestion.a + "</input><br><button id='answer-b' type='submit'>2.  " +
-    thisQuestion.b + "</button><br><button id='answer-c' type='submit'>3.  " +
-    thisQuestion.c + "</button><br><button id='answer-d' type='submit'>4.  " +
-    thisQuestion.d + "</button></h4>";}*/
-
-
+}
 
 function quizTimer() {
     var timeRemaining = 60;
