@@ -8,6 +8,7 @@ var resultDiv = document.querySelector("#result-div");
 
 var index = 0;
 var score = 0;
+var isWrong = false;
 
 var myQuestions = [{
         currentQuestion: "What are the parameters of the subtr() method?",
@@ -121,13 +122,18 @@ function quizTimer() {
     var timeInterval = setInterval(function() {
         timerEl.textContent = "Time: " + timeRemaining;
         if (timeRemaining > 0) {
-            timeRemaining--;
+            if (isWrong) {
+                timeRemaining = timeRemaining - 3;
+            } else {
+                timeRemaining--;
+            }
         } else {
             clearInterval(timeInterval);
             endQuiz();
         }
     }, 1000);
 }
+
 
 
 
@@ -140,10 +146,12 @@ function checkAnswerHandler(event) {
 
     if (selectedAnswer === correctAnswer) {
         questionResult = "Correct!";
+        score++;
     } else {
         questionResult = "Wrong!";
+        isWrong = true;
     }
-    resultDiv.setAttribute("style", "color: grey; font-style: italic;");
+    resultDiv.setAttribute("style", "text-align:center; color: grey; font-style: italic; border-top: 2px solid grey;");
     resultDiv.innerHTML = "<h2>" + questionResult + "</h2>";
 
     index++;
@@ -154,7 +162,11 @@ function checkAnswerHandler(event) {
 
 
 function endQuiz() {
-    setTimeout(function() { resultDiv.innerHTML = ""; }, 500);
+
+    setTimeout(function() {
+        resultDiv.setAttribute("style", "border: none;")
+        resultDiv.innerHTML = "";
+    }, 500);
     pageContentEl.innerHTML = "!! Insert End Code Here !!";
 
 }
