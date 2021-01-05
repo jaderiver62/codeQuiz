@@ -9,6 +9,7 @@ var resultDiv = document.querySelector("#result-div");
 var index = 0;
 var score = 0;
 var isWrong = false;
+var endTime = 60;
 
 var myQuestions = [{
         currentQuestion: "What are the parameters of the substr() method?",
@@ -119,12 +120,13 @@ var quizStart = function(event) {
 }
 
 function quizTimer() {
+
     var timeRemaining = 60;
     var timeInterval = setInterval(function() {
         timerEl.textContent = "Time: " + timeRemaining;
-        if (timeRemaining > 0) {
+        if (timeRemaining > 0 && index < myQuestions.length) {
             if (isWrong) {
-                timeRemaining = timeRemaining - 3;
+                timeRemaining = timeRemaining - 2;
             } else {
                 timeRemaining--;
             }
@@ -152,8 +154,8 @@ function checkAnswerHandler(event) {
         questionResult = "Wrong!";
         isWrong = true;
     }
-    resultDiv.setAttribute("style", "text-align:center; color: grey; font-style: italic; border-top: 2px solid grey;");
-    resultDiv.innerHTML = "<h2>" + questionResult + "</h2>";
+    resultDiv.setAttribute("style", "text-align: left; color: grey; font-style: italic; border-top: 2px solid grey;");
+    resultDiv.innerHTML = "<h1>" + questionResult + "</h1>";
 
     index++;
     pageContentEl.addEventListener("click", quizStart);
@@ -168,7 +170,8 @@ function endQuiz() {
         resultDiv.setAttribute("style", "border: none;")
         resultDiv.innerHTML = "";
     }, 500);
-    pageContentEl.innerHTML = "!! Insert End Code Here !!";
+    pageContentEl.innerHTML = "<h1>All Done!</h1><br><h3>Score: </h3>" + score + "<br>Final " + timerEl.textContent;
+
 
 }
 startBtn.onclick = quizTimer;
