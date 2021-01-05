@@ -165,13 +165,18 @@ function checkAnswerHandler(event) {
 
 
 function endQuiz() {
-
     setTimeout(function() {
         resultDiv.setAttribute("style", "border: none;")
         resultDiv.innerHTML = "";
     }, 500);
-    pageContentEl.innerHTML = "<h1>All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br>";
+    pageContentEl.innerHTML = "<h1>All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br>Enter Your Name: <input type='text' id='myName' name ='name' placeholder='Your Name'><button onclick='saveInfo()'>Submit</button>";
 
+
+}
+
+function saveInfo() {
+    var nameInfo = document.getElementById("myName").value;
+    resultDiv.innerHTML = nameInfo;
 
 }
 startBtn.onclick = quizTimer;
