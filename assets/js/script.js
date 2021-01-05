@@ -18,15 +18,15 @@ var myQuestions = [{
         answer: "substr(start, length)"
     },
     {
-        currentQuestion: "Which of the following is a type of error that can occur? ",
+        currentQuestion: "Which of the following is NOT a type of error that can occur? ",
         a: "Syntax errors",
         b: "Runtime errors",
-        c: "Debugging errors",
+        c: "Distributing errors",
         d: "Logic errors",
-        answer: "Debugging errors"
+        answer: "Distributing errors"
     },
     {
-        currentQuestion: "Which of the following is the correct syntax for the .getElementsById() method in the supplid HTML? <p id='demo'>Click the button to change the text in this paragraph. </p>",
+        currentQuestion: "Which of the following is the correct syntax for the .getElementsById() method?",
         a: "function myFunction() {document.getElementById('#demo').innerHTML ='Hello World'}",
         b: "function myFunction() {document.getElementById(demo).innerHTML = 'Hello World'}",
         c: "function myFunction() {document.getElementById([demo]).innerHTML = 'Hello World'}",
@@ -40,6 +40,13 @@ var myQuestions = [{
         c: "Determines whether or not the specified substring is present in the given string.",
         d: "Used to evaluate the closest expression.",
         answer: "Traverses the element and its parents in the document tree, and the traversing continues until the first node is found that matches the provided selector string."
+    }, {
+        currentQuestion: "What does the trunc() method return?",
+        a: "A decimal",
+        b: "An integer",
+        c: "A string",
+        d: "An array",
+        answer: "An integer"
     }
 ];
 
@@ -143,6 +150,7 @@ function checkAnswerHandler(event) {
 
 
 function endQuiz() {
+    resultDiv.innerHTML = "";
     pageContentEl.innerHTML = "!! Insert End Code Here !!";
 }
 startBtn.onclick = quizTimer;
