@@ -170,7 +170,7 @@ function endQuiz() {
         resultDiv.setAttribute("style", "border: none;")
         resultDiv.innerHTML = "";
     }, 500);
-    pageContentEl.innerHTML = "<h1>All Done!</h1><br><h3>Score: </h3>" + score + "<br>Final " + timerEl.textContent;
+    pageContentEl.innerHTML = "<h1>All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br>";
 
 
 }
