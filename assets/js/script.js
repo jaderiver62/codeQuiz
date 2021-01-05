@@ -140,7 +140,8 @@ function checkAnswerHandler(event) {
     } else {
         questionResult = "Wrong!";
     }
-    resultDiv.innerHTML = "<h3>" + questionResult + "</h3>";
+    resultDiv.setAttribute("style", "color: grey; font-style: italic;");
+    resultDiv.innerHTML = "<h2>" + questionResult + "</h2>";
 
     index++;
     pageContentEl.addEventListener("click", quizStart);
@@ -150,8 +151,9 @@ function checkAnswerHandler(event) {
 
 
 function endQuiz() {
-    resultDiv.innerHTML = "";
+    setTimeout(function() { resultDiv.innerHTML = ""; }, 500);
     pageContentEl.innerHTML = "!! Insert End Code Here !!";
+
 }
 startBtn.onclick = quizTimer;
 if (startBtn) {
