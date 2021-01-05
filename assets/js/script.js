@@ -57,9 +57,6 @@ var quizStart = function(event) {
         pageContentEl.innerHTML = "";
         event.preventDefault();
         var pageFormEl = document.createElement("div");
-
-        pageFormEl.setAttribute('style', 'display: flex;');
-        pageFormEl.setAttribute('style', 'flex-direction:column;');
         pageFormEl.className = "question-content";
         var questionText = document.createTextNode(myQuestions[index].currentQuestion);
         pageFormEl.appendChild(questionText);
@@ -72,8 +69,10 @@ var quizStart = function(event) {
         buttonEl.textContent = "1.  " + myQuestions[index].a;
         buttonEl.setAttribute("index-number", index);
         buttonEl.setAttribute("value", myQuestions[index].a);
+        buttonEl.className = "btn";
         listItemEl.appendChild(buttonEl);
         listEl.appendChild(listItemEl);
+
         buttonEl.addEventListener("click", checkAnswerHandler);
 
         var listItemEl = document.createElement("LI");
@@ -81,8 +80,10 @@ var quizStart = function(event) {
         buttonEl.textContent = "2.  " + myQuestions[index].b;
         buttonEl.setAttribute("index-number", index);
         buttonEl.setAttribute("value", myQuestions[index].b);
+        buttonEl.className = "btn";
         listItemEl.appendChild(buttonEl);
         listEl.appendChild(listItemEl);
+
         buttonEl.addEventListener("click", checkAnswerHandler);
 
         var listItemEl = document.createElement("LI");
@@ -90,6 +91,7 @@ var quizStart = function(event) {
         buttonEl.textContent = "3.  " + myQuestions[index].c;
         buttonEl.setAttribute("index-number", index);
         buttonEl.setAttribute("value", myQuestions[index].c);
+        buttonEl.className = "btn";
         listItemEl.appendChild(buttonEl);
         listEl.appendChild(listItemEl);
         buttonEl.addEventListener("click", checkAnswerHandler);
@@ -100,6 +102,7 @@ var quizStart = function(event) {
         buttonEl.textContent = "4.  " + myQuestions[index].d;
         buttonEl.setAttribute("index-number", index);
         buttonEl.setAttribute("value", myQuestions[index].d);
+        buttonEl.className = "btn";
         listItemEl.appendChild(buttonEl);
         listEl.appendChild(listItemEl);
         buttonEl.addEventListener("click", checkAnswerHandler);
@@ -114,7 +117,7 @@ var quizStart = function(event) {
 }
 
 function quizTimer() {
-    var timeRemaining = 20;
+    var timeRemaining = 60;
     var timeInterval = setInterval(function() {
         timerEl.textContent = "Time: " + timeRemaining;
         if (timeRemaining > 0) {
