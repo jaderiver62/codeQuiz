@@ -11,7 +11,7 @@ var score = 0;
 var isWrong = false;
 
 var myQuestions = [{
-        currentQuestion: "What are the parameters of the subtr() method?",
+        currentQuestion: "What are the parameters of the substr() method?",
         a: "substr(start, stop)",
         b: "substr(start, length)",
         c: "substr(stop, search)",
@@ -62,6 +62,7 @@ var quizStart = function(event) {
         var questionText = document.createTextNode(myQuestions[index].currentQuestion);
         pageFormEl.appendChild(questionText);
 
+        pageFormEl.setAttribute("style", "font-size: 2.2rem; font-weight: bold;");
         var listEl = document.createElement("UL");
         listEl.setAttribute("style", "list-style-type:none;");
         var listItemEl = document.createElement("LI");
