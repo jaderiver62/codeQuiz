@@ -170,10 +170,10 @@ function checkAnswerHandler(event) {
 
 function endQuiz() {
 
-    pageContentEl.innerHTML = "<h1> All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br><div id='smeg'></div>";
-    var smeggy = document.getElementById("smeg");
-    smeggy.innerHTML = "<h3>Enter your initals:</h3><input type='text' id='myText'><br><button id='spank'>Try it!</button><br><br>";
-    var nameBtn = document.getElementById("spank");
+    pageContentEl.innerHTML = "<h1> All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br><div id='name-form'></div>";
+    var nameFormEl = document.getElementById("name-form");
+    nameFormEl.innerHTML = "<h3>Enter your initals:</h3><input type='text' id='myText'><br><button id='name-btn'>Try it!</button><br><br>";
+    var nameBtn = document.getElementById("name-btn");
     nameBtn.addEventListener("click", myFunction);
 }
 
