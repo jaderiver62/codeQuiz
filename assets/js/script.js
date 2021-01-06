@@ -1,4 +1,6 @@
 var startBtn = document.getElementById("start-btn");
+
+
 var pageContentEl = document.querySelector("#page-content");
 var highScoresEl = document.querySelector("#scores");
 var timerEl = document.querySelector("#timer");
@@ -126,13 +128,15 @@ function quizTimer() {
         timerEl.textContent = "Time: " + timeRemaining;
         if (timeRemaining > 0 && index < myQuestions.length) {
             if (isWrong) {
-                timeRemaining = timeRemaining - 2;
+                timeRemaining = timeRemaining - 4;
             } else {
                 timeRemaining--;
             }
-        } else {
+        } else if (timeRemaining === 0) {
             clearInterval(timeInterval);
             endQuiz();
+        } else {
+            clearInterval(timeInterval);
         }
     }, 1000);
 }
@@ -166,15 +170,29 @@ function checkAnswerHandler(event) {
 
 function endQuiz() {
 
-    setTimeout(function() {
-        resultDiv.setAttribute("style", "border: none;")
-        resultDiv.innerHTML = "";
-    }, 500);
-    pageContentEl.innerHTML = "<h1>All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br>";
+    /*    setTimeout(function() {
+            resultDiv.setAttribute("style", "border: none;")
+        }, 500);   
+*/
 
+
+    pageContentEl.innerHTML = "<h1> All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br><div id='smeg'></div>";
+    saveInfoHandler();
+}
+
+var saveInfoHandler = function() {
+    var smeggy = document.getElementById("smeg");
+    smeggy.innerHTML = "<h3>Enter your initals:</h3><input type='text' id='myText'><br><button onclick='myFunction'>Try it!</button><br><br>";
+}
+
+function myFunction() {
+
+    var smeggy = document.getElementById("smeg");
+    smeggy.innerHTML = "Smeg!";
 
 }
 startBtn.onclick = quizTimer;
+
 if (startBtn) {
     startBtn.addEventListener("click", quizStart);
 }

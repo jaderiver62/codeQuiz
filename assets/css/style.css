@@ -1,6 +1,7 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
     margin: 15, 15;
+    -webkit-user-select: none;
 }
 
 header {
@@ -20,7 +21,10 @@ header {
 }
 
 .result-div {
-    text-align: center;
+    text-align: left;
+    color: grey;
+    font-style: italic;
+    border-top: 2px solid grey;
 }
 
 main {
