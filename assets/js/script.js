@@ -120,6 +120,9 @@ var quizStart = function(event) {
     }
 
 }
+var createScoreEl = function(scoreObj) {
+
+}
 
 function quizTimer() {
 
@@ -207,9 +210,20 @@ var myFunction = function(event) {
 }
 var saveScore = function() {
     localStorage.setItem("theList", JSON.stringify(theList));
+    console.log("Score saved");
+}
+var loadScores = function() {
+    var savedScores = localStorage.getItem("theList");
+    if (!savedScores) {
+        return false;
+    }
+    console.log("Saved scores found...");
+    theList = JSON.parse(savedScores);
+    console.log(theList);
 }
 startBtn.onclick = quizTimer;
 
 if (startBtn) {
     startBtn.addEventListener("click", quizStart);
 }
+loadScores();
