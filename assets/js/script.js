@@ -201,9 +201,12 @@ var myFunction = function(event) {
         scoreNumber: score,
         time: timerEl.textContent
     };
-    console.log(scoreObj);
-    console.log(scoreObj.time);
+    theList.push(scoreObj);
+    saveScore();
 
+}
+var saveScore = function() {
+    localStorage.setItem("theList", JSON.stringify(theList));
 }
 startBtn.onclick = quizTimer;
 
