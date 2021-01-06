@@ -5,13 +5,13 @@ var pageContentEl = document.querySelector("#page-content");
 var highScoresEl = document.querySelector("#scores");
 var timerEl = document.querySelector("#timer");
 var resultDiv = document.querySelector("#result-div");
-
+var endDiv = document.querySelector("#end-div");
 
 
 var index = 0;
 var score = 0;
 var isWrong = false;
-var endTime = 60;
+
 
 var myQuestions = [{
         currentQuestion: "What are the parameters of the substr() method?",
@@ -170,26 +170,18 @@ function checkAnswerHandler(event) {
 
 function endQuiz() {
 
-    /*    setTimeout(function() {
-            resultDiv.setAttribute("style", "border: none;")
-        }, 500);   
-*/
-
-
     pageContentEl.innerHTML = "<h1> All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br><div id='smeg'></div>";
-    saveInfoHandler();
+    var smeggy = document.getElementById("smeg");
+    smeggy.innerHTML = "<h3>Enter your initals:</h3><input type='text' id='myText'><br><button id='spank'>Try it!</button><br><br>";
+    var nameBtn = document.getElementById("spank");
+    nameBtn.addEventListener("click", myFunction);
 }
 
-var saveInfoHandler = function() {
-    var smeggy = document.getElementById("smeg");
-    smeggy.innerHTML = "<h3>Enter your initals:</h3><input type='text' id='myText'><br><button onclick='myFunction'>Try it!</button><br><br>";
-}
-
-function myFunction() {
-
-    var smeggy = document.getElementById("smeg");
-    smeggy.innerHTML = "Smeg!";
-
+var myFunction = function(event) {
+    event.preventDefault();
+    var inputResult = document.getElementById("myText").value;
+    resultDiv.innerHTML="";
+    endDiv.innerHTML= inputResult;
 }
 startBtn.onclick = quizTimer;
 
