@@ -206,7 +206,8 @@ var myFunction = function(event) {
     };
     theList.push(scoreObj);
     saveScore();
-    displayHighScoreList();
+    pageContentEl = "blub";
+
 
 }
 var saveScore = function() {
@@ -224,7 +225,7 @@ var loadScores = function() {
     console.log(theList);
 }
 var displayHighScoreList = function() {
-    pageContentEl.innerHTML = "";
+
     for (var i = 0; i < theList.length; i++) {
         console.log(theList[i]);
     }
