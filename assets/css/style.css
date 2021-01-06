@@ -20,12 +20,6 @@ header {
     margin-top: 20px;
 }
 
-.result-div {
-    text-align: left;
-    color: grey;
-    font-style: italic;
-    border-top: 2px solid grey;
-}
 
 main {
     text-align: center;
@@ -34,7 +28,12 @@ main {
 li {
     padding: 20px;
 }
+.name-form{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
 
+}
 .start-btn,
 .btn , .name-btn{
     outline: none;
@@ -55,14 +54,16 @@ li {
     border-radius: 4px;
 }
 .btn:hover,
-.start-btn:hover {
+.start-btn:hover, .name-btn:hover {
     box-shadow: 0 2px grey;
     top: -2px;
     opacity: .7;
 }
-
+.text-area-end{
+    padding: 0 20px;
+}
 .btn:active,
-.start-btn:active {
+.start-btn:active, .name-btn:active {
     box-shadow: 0 0px grey;
     top: 0;
 }

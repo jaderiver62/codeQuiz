@@ -172,7 +172,7 @@ function endQuiz() {
 
     pageContentEl.innerHTML = "<h1> All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br><div id='name-form' class='name-form'></div>";
     var nameFormEl = document.getElementById("name-form");
-    nameFormEl.innerHTML = "<h3>Enter your initals:</h3><div><input type='text' id='myText' placeholder='Your Initials' class='text-area-name'><br></div><div><button id='name-btn' class='name-btn'>Try it!</button></div><br><br>";
+    nameFormEl.innerHTML = "<h3>Enter your initals:</h3><div class='text-area-end'><input type='text' id='myText' placeholder='Your Initials' class='text-area-name'><br></div><div><button id='name-btn' class='name-btn'>Submit</button></div><br><br>";
     var input = document.getElementById ("myText");
     input.focus();
     var nameBtn = document.getElementById("name-btn");
@@ -183,6 +183,7 @@ function endQuiz() {
 var myFunction = function(event) {
     event.preventDefault();
     var inputResult = document.getElementById("myText").value;
+    resultDiv.setAttribute("style", "border-top:'inherit'; color: green; font-size:2rem;  text-align: center;");
     resultDiv.innerHTML="";
     endDiv.innerHTML= inputResult;
 }
