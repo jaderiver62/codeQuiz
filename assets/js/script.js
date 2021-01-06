@@ -12,7 +12,7 @@ var index = 0;
 var score = 0;
 var isWrong = false;
 
-
+var theList = [];
 var myQuestions = [{
         currentQuestion: "What are the parameters of the substr() method?",
         a: "substr(start, stop)",
@@ -189,10 +189,21 @@ function endQuiz() {
 var myFunction = function(event) {
     event.preventDefault();
     var inputResult = document.getElementById("myText").value;
+
+    /*    tasks.push(taskDataObj);*/
+
     resultDiv.setAttribute("style", "border-top:'inherit';");
     resultDiv.innerHTML = "";
     endDiv.setAttribute("style", " color: green; font-size:2rem;  text-align: center;");
     endDiv.innerHTML = inputResult;
+    var scoreObj = {
+        scoreName: inputResult,
+        scoreNumber: score,
+        time: timerEl.textContent
+    };
+    console.log(scoreObj);
+    console.log(scoreObj.time);
+
 }
 startBtn.onclick = quizTimer;
 
