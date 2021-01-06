@@ -206,11 +206,14 @@ var myFunction = function(event) {
     };
     theList.push(scoreObj);
     saveScore();
+    pageContentEl = "blub";
+
 
 }
 var saveScore = function() {
     localStorage.setItem("theList", JSON.stringify(theList));
     console.log("Score saved");
+
 }
 var loadScores = function() {
     var savedScores = localStorage.getItem("theList");
@@ -221,6 +224,13 @@ var loadScores = function() {
     theList = JSON.parse(savedScores);
     console.log(theList);
 }
+var displayHighScoreList = function() {
+
+    for (var i = 0; i < theList.length; i++) {
+        console.log(theList[i]);
+    }
+}
+
 startBtn.onclick = quizTimer;
 
 if (startBtn) {
