@@ -1,16 +1,18 @@
 var startBtn = document.getElementById("start-btn");
+
+
 var pageContentEl = document.querySelector("#page-content");
 var highScoresEl = document.querySelector("#scores");
 var timerEl = document.querySelector("#timer");
 var resultDiv = document.querySelector("#result-div");
-
+var endDiv = document.querySelector("#end-div");
 
 
 var index = 0;
 var score = 0;
 var isWrong = false;
-var endTime = 60;
 
+var theList = [];
 var myQuestions = [{
         currentQuestion: "What are the parameters of the substr() method?",
         a: "substr(start, stop)",
@@ -118,6 +120,9 @@ var quizStart = function(event) {
     }
 
 }
+var createScoreEl = function(scoreObj) {
+
+}
 
 function quizTimer() {
 
@@ -126,13 +131,15 @@ function quizTimer() {
         timerEl.textContent = "Time: " + timeRemaining;
         if (timeRemaining > 0 && index < myQuestions.length) {
             if (isWrong) {
-                timeRemaining = timeRemaining - 2;
+                timeRemaining = timeRemaining - 4;
             } else {
                 timeRemaining--;
             }
-        } else {
+        } else if (timeRemaining === 0) {
             clearInterval(timeInterval);
             endQuiz();
+        } else {
+            clearInterval(timeInterval);
         }
     }, 1000);
 }
@@ -166,15 +173,67 @@ function checkAnswerHandler(event) {
 
 function endQuiz() {
 
-    setTimeout(function() {
-        resultDiv.setAttribute("style", "border: none;")
-        resultDiv.innerHTML = "";
-    }, 500);
-    pageContentEl.innerHTML = "<h1>All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br>";
+    pageContentEl.innerHTML = "<h1> All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br><div id='name-form' class='name-form'></div>";
+    var nameFormEl = document.getElementById("name-form");
+    nameFormEl.innerHTML = "<h3>Enter initals:</h3><div class='text-area-end'><input type='text' id='myText' placeholder='Your Initials' class='text-area-name'><br></div><div><button id='name-btn' class='name-btn'>Submit</button></div><br><br>";
+    var input = document.getElementById("myText");
+    input.focus();
+    input.addEventListener("keyup", function(event) {
+        if (event.code === 'Enter') {
+            event.preventDefault();
+            document.getElementById("name-btn").click();
+        }
+    });
+    var nameBtn = document.getElementById("name-btn");
+
+    nameBtn.addEventListener("click", myFunction);
+}
+
+var myFunction = function(event) {
+    event.preventDefault();
+    var inputResult = document.getElementById("myText").value;
+
+    /*    tasks.push(taskDataObj);*/
+
+    resultDiv.setAttribute("style", "border-top:'inherit';");
+    resultDiv.innerHTML = "";
+    endDiv.setAttribute("style", " color: green; font-size:2rem;  text-align: center;");
+    endDiv.innerHTML = inputResult;
+    var scoreObj = {
+        scoreName: inputResult,
+        scoreNumber: score,
+        time: timerEl.textContent
+    };
+    theList.push(scoreObj);
+    saveScore();
+    pageContentEl = "blub";
 
 
 }
+var saveScore = function() {
+    localStorage.setItem("theList", JSON.stringify(theList));
+    console.log("Score saved");
+
+}
+var loadScores = function() {
+    var savedScores = localStorage.getItem("theList");
+    if (!savedScores) {
+        return false;
+    }
+    console.log("Saved scores found...");
+    theList = JSON.parse(savedScores);
+    console.log(theList);
+}
+var displayHighScoreList = function() {
+
+    for (var i = 0; i < theList.length; i++) {
+        console.log(theList[i]);
+    }
+}
+
 startBtn.onclick = quizTimer;
+
 if (startBtn) {
     startBtn.addEventListener("click", quizStart);
 }
+loadScores();

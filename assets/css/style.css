@@ -1,6 +1,7 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
     margin: 15, 15;
+    -webkit-user-select: none;
 }
 
 header {
@@ -19,10 +20,6 @@ header {
     margin-top: 20px;
 }
 
-.result-div {
-    text-align: center;
-}
-
 main {
     text-align: center;
 }
@@ -31,8 +28,15 @@ li {
     padding: 20px;
 }
 
+.name-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .start-btn,
-.btn {
+.btn,
+.name-btn {
     outline: none;
     border: 10px white;
     padding: 10px 15px;
@@ -45,15 +49,29 @@ li {
     box-shadow: 0 3px grey;
 }
 
+.text-area-name {
+    border: 2px solid grey;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+}
+
 .btn:hover,
-.start-btn:hover {
+.start-btn:hover,
+.name-btn:hover {
     box-shadow: 0 2px grey;
     top: -2px;
     opacity: .7;
+    background: rgb(128, 13, 112);
+}
+
+.text-area-end {
+    padding: 0 20px;
 }
 
 .btn:active,
-.start-btn:active {
+.start-btn:active,
+.name-btn:active {
     box-shadow: 0 0px grey;
     top: 0;
 }
