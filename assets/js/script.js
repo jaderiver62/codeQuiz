@@ -2,10 +2,10 @@ var startBtn = document.getElementById("start-btn");
 
 
 var pageContentEl = document.querySelector("#page-content");
-var highScoresEl = document.querySelector("#scores");
+var highScoresLinkEl = document.querySelector("#scores");
 var timerEl = document.querySelector("#timer");
-var resultDiv = document.querySelector("#result-div");
-var endDiv = document.querySelector("#end-div");
+var resultDivEl = document.querySelector("#result-div");
+var endDivEl = document.querySelector("#end-div");
 
 
 var index = 0;
@@ -159,8 +159,8 @@ function checkAnswerHandler(event) {
         questionResult = "Wrong!";
         isWrong = true;
     }
-    resultDiv.setAttribute("style", "text-align: left; color: grey; font-style: italic; border-top: 2px solid grey;");
-    resultDiv.innerHTML = "<h1>" + questionResult + "</h1>";
+    resultDivEl.setAttribute("style", "text-align: left; color: grey; font-style: italic; border-top: 2px solid grey;");
+    resultDivEl.innerHTML = "<h1>" + questionResult + "</h1>";
 
     index++;
     pageContentEl.addEventListener("click", quizStart);
@@ -193,10 +193,10 @@ var submitNameHandler = function(event) {
 
     /*    tasks.push(taskDataObj);*/
 
-    resultDiv.setAttribute("style", "border-top:'inherit';");
-    resultDiv.innerHTML = "";
-    /*    endDiv.setAttribute("style", " color: green; font-size:2rem;  text-align: center;");
-        endDiv.innerHTML = inputResult;*/
+    resultDivEl.setAttribute("style", "border-top:'inherit';");
+    resultDivEl.innerHTML = "";
+    /*    endDivEl.setAttribute("style", " color: green; font-size:2rem;  text-align: center;");
+        endDivEl.innerHTML = inputResult;*/
     var scoreObj = {
         scoreName: inputResult,
         scoreNumber: score,
@@ -229,8 +229,20 @@ function loadScores() {
 
 function displayHighScoreList() {
     pageContentEl.style.display = 'none';
+
+
     var tab = "    ";
-    endDiv.innerHTML = "<h1>High scores</h1><br>" + theList[1].scoreName + tab + theList[1].scoreNumber + tab + theList[1].time;
+    endDivEl.innerHTML = "<h1>High scores</h1><br><div id='high-score-list' class='high-score-list'></div>";
+    var highScoreListEl = document.querySelector("#high-score-list");
+    for (var i = 0; i < theList.length; i++) {
+        var scoreEl = document.createElement("li");
+        scoreEl.className = "score-el";
+        var nameRecordEl = theList[i].scoreName;
+        var scoreRecordEl = theList[i].scoreNumber;
+        var scoreTime = theList[i].time;
+        scoreEl.textContent = nameRecordEl + tab + scoreRecordEl + tab + scoreTime;
+        highScoreListEl.appendChild(scoreEl);
+    }
 }
 startBtn.onclick = quizTimer;
 
