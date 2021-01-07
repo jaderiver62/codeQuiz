@@ -6,7 +6,7 @@ var highScoresEl = document.querySelector("#scores");
 var timerEl = document.querySelector("#timer");
 var resultDiv = document.querySelector("#result-div");
 var endDiv = document.querySelector("#end-div");
-var smegularEl = document.querySelector("#smegular");
+
 
 var index = 0;
 var score = 0;
@@ -54,9 +54,7 @@ var myQuestions = [{
     }
 ];
 
-var displayHighScores=function(){
-    var smegularEl = "SMEG!"
-}
+
 
 var quizStart = function(event) {
     if (index < myQuestions.length) {
@@ -175,7 +173,7 @@ function checkAnswerHandler(event) {
 
 function endQuiz() {
 
-    pageContentEl.innerHTML = "<div id='smegular'><h1> All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br><div id='name-form' class='name-form'></div></div>";
+    pageContentEl.innerHTML = "<h1> All Done!</h1><br><h3>Your Final Score is: " + score + " correct answers<br>Final " + timerEl.textContent + "</h3><br><div id='name-form' class='name-form'></div>";
     var nameFormEl = document.getElementById("name-form");
     nameFormEl.innerHTML = "<h3>Enter initals:</h3><div class='text-area-end'><input type='text' id='myText' placeholder='Your Initials' class='text-area-name'><br></div><div><button id='name-btn' class='name-btn'>Submit</button></div><br><br>";
     var input = document.getElementById("myText");
@@ -197,11 +195,10 @@ var myFunction = function(event) {
 
     /*    tasks.push(taskDataObj);*/
 
-    // resultDiv.setAttribute("style", "border-top:'inherit';");
-    // resultDiv.innerHTML = "";
-    // endDiv.setAttribute("style", " color: green; font-size:2rem;  text-align: center;");
-    // endDiv.innerHTML = inputResult;
-    displayHighScores();
+    resultDiv.setAttribute("style", "border-top:'inherit';");
+    resultDiv.innerHTML = "";
+    endDiv.setAttribute("style", " color: green; font-size:2rem;  text-align: center;");
+    endDiv.innerHTML = inputResult;
     var scoreObj = {
         scoreName: inputResult,
         scoreNumber: score,
@@ -209,15 +206,19 @@ var myFunction = function(event) {
     };
     theList.push(scoreObj);
     saveScore();
-}
-var saveScore = function() {
-    localStorage.setItem("theList", JSON.stringify(theList));
-    for (var i = 0; i < theList.length; i++) {
-        console.log(theList[i]);
-    }
+    pageContentEl = "blub";
+
+
 }
 
-var loadScores = function() {
+function saveScore() {
+    localStorage.setItem("theList", JSON.stringify(theList));
+    console.log("Score saved");
+    displayHighScoreList();
+
+}
+
+function loadScores() {
     var savedScores = localStorage.getItem("theList");
     if (!savedScores) {
         return false;
@@ -227,6 +228,15 @@ var loadScores = function() {
     console.log(theList);
 }
 
+function displayHighScoreList() {
+    pageContentEl.innerHTML = "BALLS";
+    var displayHighScoreList = function() {
+        git
+        for (var i = 0; i < theList.length; i++) {
+            console.log(theList[i]);
+        }
+    }
+}
 startBtn.onclick = quizTimer;
 
 if (startBtn) {
