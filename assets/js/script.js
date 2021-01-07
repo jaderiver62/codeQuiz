@@ -253,17 +253,21 @@ function displayHighScoreList() {
 
 
     var tab = "    ";
-    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ol id='high-score-list' class='high-score-list'></ol></h3>";
+    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ul id='high-score-list' class='high-score-list'></ul></h3>";
     var highScoreListEl = document.querySelector("#high-score-list");
 
     for (var i = 0; i < theList.length; i++) {
-        var visualIndex = (i + 1);
+
         var scoreListEl = document.createElement("LI");
         scoreListEl.className = "score-el";
+        var visualIndex = (i + 1);
+        var listDivEl = document.createElement("div");
+        listDivEl.setAttribute("style", "padding: 20px 30px; background: rgb(201, 187, 221);");
         var nameRecordEl = theList[i].scoreName;
         var scoreRecordEl = theList[i].scoreNumber;
         var scoreTime = theList[i].time;
-        scoreListEl.innerHTML = visualIndex + ".  " + nameRecordEl + tab + "-" + tab + scoreRecordEl + tab + "-" + tab + scoreTime;
+        listDivEl.innerHTML = visualIndex + ":  " + nameRecordEl + tab + "-" + tab + scoreRecordEl + tab + "-" + tab + scoreTime;
+        scoreListEl.appendChild(listDivEl);
         highScoreListEl.appendChild(scoreListEl);
     }
 }
