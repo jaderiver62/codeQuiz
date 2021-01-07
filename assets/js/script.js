@@ -230,21 +230,11 @@ function loadScores() {
 
 function displayHighScoreList() {
     pageContentEl.innerHTML = "BALLS";
-<<<<<<< HEAD
     for (var i = 0; i < theList.length; i++) {
         console.log(theList[i]);
     }
 }
 
-=======
-    var displayHighScoreList = function() {
-        git
-        for (var i = 0; i < theList.length; i++) {
-            console.log(theList[i]);
-        }
-    }
-}
->>>>>>> 952c76ce2113cac3a159f6277cf1eb299eaf2745
 startBtn.onclick = quizTimer;
 
 if (startBtn) {
