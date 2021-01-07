@@ -9,7 +9,7 @@
      justify-content: space-between;
  }
  
- .scores {
+ .scores-link {
      color: rgb(170, 25, 158);
  }
  
@@ -36,7 +36,8 @@
  
  .start-btn,
  .btn,
- .name-btn {
+ .name-btn,
+ .go-back {
      outline: none;
      border: 10px white;
      padding: 10px 15px;
@@ -57,6 +58,7 @@
  }
  
  .btn:hover,
+ .go-back:hover,
  .start-btn:hover,
  .name-btn:hover {
      box-shadow: 0 2px grey;
@@ -66,6 +68,7 @@
  }
  
  .btn:active,
+ .go-back:active,
  .start-btn:active,
  .name-btn:active {
      box-shadow: 0 0px grey;
@@ -73,7 +76,7 @@
  }
  
  .score-el {
-     list-style-type: none;
+     list-style-type: decimal;
  }
  
  footer {

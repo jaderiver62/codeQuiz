@@ -1,8 +1,6 @@
 var startBtn = document.getElementById("start-btn");
 
-
 var pageContentEl = document.querySelector("#page-content");
-var highScoresLinkEl = document.querySelector("#scores");
 var timerEl = document.querySelector("#timer");
 var resultDivEl = document.querySelector("#result-div");
 var endDivEl = document.querySelector("#end-div");
@@ -250,11 +248,14 @@ function loadScores() {
 
 function displayHighScoreList() {
     pageContentEl.style.display = 'none';
+    timerEl.style.display = 'none';
+    document.getElementById("scores-link").style.display = 'none';
 
 
     var tab = "    ";
-    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ul id='high-score-list' class='high-score-list'></ul></h3>";
+    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ul id='high-score-list' class='high-score-list'></ul></h3><button id='go-back' class='go-back'>Go Back</button>";
     var highScoreListEl = document.querySelector("#high-score-list");
+    var goBackBtn = document.querySelector("#go-back");
 
     for (var i = 0; i < theList.length; i++) {
 
@@ -262,14 +263,16 @@ function displayHighScoreList() {
         scoreListEl.className = "score-el";
         var visualIndex = (i + 1);
         var listDivEl = document.createElement("div");
-        listDivEl.setAttribute("style", "padding: 20px 30px; background: rgb(201, 187, 221);");
+        listDivEl.setAttribute("style", "padding: 10px 20px; background: rgb(201, 187, 221);");
         var nameRecordEl = theList[i].scoreName;
         var scoreRecordEl = theList[i].scoreNumber;
         var scoreTime = theList[i].time;
-        listDivEl.innerHTML = visualIndex + ":  " + nameRecordEl + tab + "-" + tab + scoreRecordEl + tab + "-" + tab + scoreTime;
+        listDivEl.innerHTML = visualIndex + ".  " + nameRecordEl + tab + "-" + tab + scoreRecordEl + tab + "-" + tab + scoreTime;
         scoreListEl.appendChild(listDivEl);
         highScoreListEl.appendChild(scoreListEl);
     }
+    goBackBtn.addEventListener("click", quizStart);
+
 }
 startBtn.onclick = quizTimer;
 
