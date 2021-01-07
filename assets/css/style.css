@@ -78,6 +78,7 @@ li {
 
 footer {
     display: flex;
+    color: rgb(177, 13, 155);
     justify-content: center;
     align-items: flex-end;
     margin-top: 30%;

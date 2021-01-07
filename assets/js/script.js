@@ -120,9 +120,7 @@ var quizStart = function(event) {
     }
 
 }
-var createScoreEl = function(scoreObj) {
 
-}
 
 function quizTimer() {
 
@@ -186,10 +184,10 @@ function endQuiz() {
     });
     var nameBtn = document.getElementById("name-btn");
 
-    nameBtn.addEventListener("click", myFunction);
+    nameBtn.addEventListener("click", submitNameHandler);
 }
 
-var myFunction = function(event) {
+var submitNameHandler = function(event) {
     event.preventDefault();
     var inputResult = document.getElementById("myText").value;
 
@@ -197,8 +195,8 @@ var myFunction = function(event) {
 
     resultDiv.setAttribute("style", "border-top:'inherit';");
     resultDiv.innerHTML = "";
-    endDiv.setAttribute("style", " color: green; font-size:2rem;  text-align: center;");
-    endDiv.innerHTML = inputResult;
+    /*    endDiv.setAttribute("style", " color: green; font-size:2rem;  text-align: center;");
+        endDiv.innerHTML = inputResult;*/
     var scoreObj = {
         scoreName: inputResult,
         scoreNumber: score,
@@ -206,10 +204,9 @@ var myFunction = function(event) {
     };
     theList.push(scoreObj);
     saveScore();
-    pageContentEl = "blub";
-
 
 }
+
 
 function saveScore() {
     localStorage.setItem("theList", JSON.stringify(theList));
@@ -220,21 +217,21 @@ function saveScore() {
 
 function loadScores() {
     var savedScores = localStorage.getItem("theList");
+
     if (!savedScores) {
         return false;
     }
     console.log("Saved scores found...");
     theList = JSON.parse(savedScores);
     console.log(theList);
+
 }
 
 function displayHighScoreList() {
-    pageContentEl.innerHTML = "BALLS";
-    for (var i = 0; i < theList.length; i++) {
-        console.log(theList[i]);
-    }
+    pageContentEl.style.display = 'none';
+    var tab = "    ";
+    endDiv.innerHTML = "<h1>High scores</h1><br>" + theList[1].scoreName + tab + theList[1].scoreNumber + tab + theList[1].time;
 }
-
 startBtn.onclick = quizTimer;
 
 if (startBtn) {
