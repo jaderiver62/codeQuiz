@@ -51,6 +51,27 @@ var myQuestions = [{
         c: "A string",
         d: "An array",
         answer: "An integer"
+    }, {
+        currentQuestion: "?",
+        a: "?",
+        b: "?",
+        c: "?",
+        d: "?",
+        answer: "?"
+    }, {
+        currentQuestion: "?",
+        a: "?",
+        b: "?",
+        c: "?",
+        d: "?",
+        answer: "?"
+    }, {
+        currentQuestion: "?",
+        a: "?",
+        b: "?",
+        c: "?",
+        d: "?",
+        answer: "?"
     }
 ];
 
@@ -68,8 +89,8 @@ var quizStart = function(event) {
         pageFormEl.setAttribute("style", "font-size: 2.2rem; font-weight: bold;");
         var listEl = document.createElement("UL");
         listEl.setAttribute("style", "list-style-type:none;");
-        var listItemEl = document.createElement("LI");
 
+        var listItemEl = document.createElement("LI");
         var buttonEl = document.createElement("button");
         buttonEl.textContent = "1.  " + myQuestions[index].a;
         buttonEl.setAttribute("index-number", index);
@@ -232,16 +253,18 @@ function displayHighScoreList() {
 
 
     var tab = "    ";
-    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><div id='high-score-list' class='high-score-list'></div></h3>";
+    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ol id='high-score-list' class='high-score-list'></ol></h3>";
     var highScoreListEl = document.querySelector("#high-score-list");
+
     for (var i = 0; i < theList.length; i++) {
-        var scoreEl = document.createElement("ol");
-        scoreEl.className = "score-el";
+        var visualIndex = (i + 1);
+        var scoreListEl = document.createElement("LI");
+        scoreListEl.className = "score-el";
         var nameRecordEl = theList[i].scoreName;
         var scoreRecordEl = theList[i].scoreNumber;
         var scoreTime = theList[i].time;
-        scoreEl.textContent = nameRecordEl + tab + "-" + tab + scoreRecordEl + tab + "-" + tab + scoreTime;
-        highScoreListEl.appendChild(scoreEl);
+        scoreListEl.innerHTML = visualIndex + ".  " + nameRecordEl + tab + "-" + tab + scoreRecordEl + tab + "-" + tab + scoreTime;
+        highScoreListEl.appendChild(scoreListEl);
     }
 }
 startBtn.onclick = quizTimer;
