@@ -232,15 +232,15 @@ function displayHighScoreList() {
 
 
     var tab = "    ";
-    endDivEl.innerHTML = "<h1>High scores</h1><br><div id='high-score-list' class='high-score-list'></div>";
+    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><div id='high-score-list' class='high-score-list'></div></h3>";
     var highScoreListEl = document.querySelector("#high-score-list");
     for (var i = 0; i < theList.length; i++) {
-        var scoreEl = document.createElement("li");
+        var scoreEl = document.createElement("ol");
         scoreEl.className = "score-el";
         var nameRecordEl = theList[i].scoreName;
         var scoreRecordEl = theList[i].scoreNumber;
         var scoreTime = theList[i].time;
-        scoreEl.textContent = nameRecordEl + tab + scoreRecordEl + tab + scoreTime;
+        scoreEl.textContent = nameRecordEl + tab + "-" + tab + scoreRecordEl + tab + "-" + tab + scoreTime;
         highScoreListEl.appendChild(scoreEl);
     }
 }
