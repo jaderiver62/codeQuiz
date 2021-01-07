@@ -210,12 +210,15 @@ var myFunction = function(event) {
 
 
 }
-var saveScore = function() {
+
+function saveScore() {
     localStorage.setItem("theList", JSON.stringify(theList));
     console.log("Score saved");
+    displayHighScoreList();
 
 }
-var loadScores = function() {
+
+function loadScores() {
     var savedScores = localStorage.getItem("theList");
     if (!savedScores) {
         return false;
@@ -224,13 +227,16 @@ var loadScores = function() {
     theList = JSON.parse(savedScores);
     console.log(theList);
 }
-var displayHighScoreList = function() {
 
-    for (var i = 0; i < theList.length; i++) {
-        console.log(theList[i]);
+function displayHighScoreList() {
+    pageContentEl.innerHTML = "BALLS";
+    var displayHighScoreList = function() {
+        git
+        for (var i = 0; i < theList.length; i++) {
+            console.log(theList[i]);
+        }
     }
 }
-
 startBtn.onclick = quizTimer;
 
 if (startBtn) {
