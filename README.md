@@ -3,8 +3,8 @@
 
 
 
-![Screenshot](assets\images\codeQuizsrcsht1.png)
-![Screenshot](assets\images\codeQuizsrcsht2.png)
+![Screenshot](https://github.com/jaderiver62/codeQuiz/blob/main/assets/images/codeQuizsrcsht1.png?raw=true)
+![Screenshot](https://github.com/jaderiver62/codeQuiz/blob/main/assets/images/codeQuizsrcsht2.png?raw=true)
 
 ###### :sparkles:
 
