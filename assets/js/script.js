@@ -244,6 +244,7 @@ var submitNameHandler = function(event) {
 
 function displayHighScoreList() {
     pageContentEl.style.display = 'none';
+    resultDivEl.style.display = 'none';
     timerEl.style.display = 'none';
     document.getElementById("scores-link").style.display = 'none';
 
