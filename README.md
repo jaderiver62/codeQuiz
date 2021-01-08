@@ -1,5 +1,5 @@
 # codeQuiz
-##A fun Javascript Quiz!:
+# *A fun Javascript Quiz!*
 
 
 
@@ -9,4 +9,4 @@
 ###### :sparkles:https://jaderiver62.github.io/codeQuiz/
 
 Contact Info:
-[jadriver64@gmail.com](mailto:jaderiver64@gmail.com)
+* [jadriver64@gmail.com](mailto:jaderiver64@gmail.com)
