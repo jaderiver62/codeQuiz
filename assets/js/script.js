@@ -248,9 +248,10 @@ function displayHighScoreList() {
     timerEl.style.display = 'none';
     document.getElementById("scores-link").style.display = 'none';
 
-
+    /*id = 'score-header'
+    class = 'score-header'*/
     var tab = "    ";
-    endDivEl.innerHTML = "<h1>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;High scores</h1><br><h2><ul id='high-score-list' class='high-score-list'></ul> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button id='go-back' onClick='window.location.reload();' class='go-back'> Go Back </button>&nbsp; &nbsp; &nbsp;<button id='clear-scores' class='clear-scores' onclick='clearScoresHandler()'>Clear high scores</button></h2> ";
+    endDivEl.innerHTML = "<h1>  &nbsp; &nbsp &nbsp; &nbsp;High scores</h1><br><h2><ul id='high-score-list' class='high-score-list'></ul> &nbsp; &nbsp; &nbsp; &nbsp; <button id='go-back' onClick='window.location.reload();' class='go-back'> Go Back </button>&nbsp; &nbsp; &nbsp;<button id='clear-scores' class='clear-scores' onclick='clearScoresHandler()'>Clear high scores</button></h2> ";
     var highScoreListEl = document.querySelector("#high-score-list");
     theList.sort(function(scoreA, scoreB) {
         return scoreB.scoreNumber - scoreA.scoreNumber
