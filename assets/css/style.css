@@ -37,7 +37,8 @@
  .start-btn,
  .btn,
  .name-btn,
- .go-back {
+ .go-back,
+ .clear-scores {
      outline: none;
      border: 10px white;
      padding: 10px 15px;
@@ -58,6 +59,7 @@
  }
  
  .btn:hover,
+ .clear-scores:hover,
  .go-back:hover,
  .start-btn:hover,
  .name-btn:hover {
@@ -70,7 +72,8 @@
  .btn:active,
  .go-back:active,
  .start-btn:active,
- .name-btn:active {
+ .name-btn:active,
+ .clear-scores:active {
      box-shadow: 0 0px grey;
      top: 0;
  }

@@ -4,7 +4,7 @@ var pageContentEl = document.querySelector("#page-content");
 var timerEl = document.querySelector("#timer");
 var resultDivEl = document.querySelector("#result-div");
 var endDivEl = document.querySelector("#end-div");
-
+var link = document.getElementById("scores-link");
 
 var index = 0;
 var score = 0;
@@ -75,10 +75,10 @@ var myQuestions = [{
 
 
 
-var quizStart = function(event) {
+var quizStart = function() {
+    pageContentEl.innerHTML = "";
     if (index < myQuestions.length) {
-        pageContentEl.innerHTML = "";
-        event.preventDefault();
+
         var pageFormEl = document.createElement("div");
         pageFormEl.className = "question-content";
         var questionText = document.createTextNode(myQuestions[index].currentQuestion);
@@ -148,7 +148,7 @@ function quizTimer() {
         timerEl.textContent = "Time: " + timeRemaining;
         if (timeRemaining > 0 && index < myQuestions.length) {
             if (isWrong) {
-                timeRemaining = timeRemaining - 4;
+                timeRemaining = timeRemaining - 10;
             } else {
                 timeRemaining--;
             }
@@ -227,6 +227,43 @@ var submitNameHandler = function(event) {
 }
 
 
+function displayHighScoreList() {
+    pageContentEl.style.display = 'none';
+    timerEl.style.display = 'none';
+    document.getElementById("scores-link").style.display = 'none';
+
+
+    var tab = "    ";
+    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ul id='high-score-list' class='high-score-list'></ul></h3><button id='go-back' onClick='window.location.reload();' class='go-back'> Go Back </button><button id='clear-scores' class='clear-scores' onclick='clearScoresHandler()'>Clear high scores</button > ";
+    var highScoreListEl = document.querySelector("#high-score-list");
+
+
+    for (var i = 0; i < theList.length; i++) {
+
+        var scoreListEl = document.createElement("LI");
+        scoreListEl.className = "score-el";
+        var visualIndex = (i + 1);
+        var listDivEl = document.createElement("div");
+        listDivEl.setAttribute("style", "padding: 10px 20px; background: rgb(201, 187, 221);");
+        var nameRecordEl = theList[i].scoreName;
+        var scoreRecordEl = theList[i].scoreNumber;
+        var scoreTime = theList[i].time;
+        listDivEl.innerHTML = visualIndex + ".  " + nameRecordEl + tab + "-" + tab + scoreRecordEl + tab + "-" + tab + scoreTime;
+        scoreListEl.appendChild(listDivEl);
+        highScoreListEl.appendChild(scoreListEl);
+    }
+
+}
+
+var clearScoresHandler = function() {
+    localStorage.clear();
+    theList = [];
+    saveScore();
+    displayHighScoreList();
+}
+
+
+
 function saveScore() {
     localStorage.setItem("theList", JSON.stringify(theList));
     console.log("Score saved");
@@ -243,35 +280,6 @@ function loadScores() {
     console.log("Saved scores found...");
     theList = JSON.parse(savedScores);
     console.log(theList);
-
-}
-
-function displayHighScoreList() {
-    pageContentEl.style.display = 'none';
-    timerEl.style.display = 'none';
-    document.getElementById("scores-link").style.display = 'none';
-
-
-    var tab = "    ";
-    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ul id='high-score-list' class='high-score-list'></ul></h3><button id='go-back' class='go-back'>Go Back</button>";
-    var highScoreListEl = document.querySelector("#high-score-list");
-    var goBackBtn = document.querySelector("#go-back");
-
-    for (var i = 0; i < theList.length; i++) {
-
-        var scoreListEl = document.createElement("LI");
-        scoreListEl.className = "score-el";
-        var visualIndex = (i + 1);
-        var listDivEl = document.createElement("div");
-        listDivEl.setAttribute("style", "padding: 10px 20px; background: rgb(201, 187, 221);");
-        var nameRecordEl = theList[i].scoreName;
-        var scoreRecordEl = theList[i].scoreNumber;
-        var scoreTime = theList[i].time;
-        listDivEl.innerHTML = visualIndex + ".  " + nameRecordEl + tab + "-" + tab + scoreRecordEl + tab + "-" + tab + scoreTime;
-        scoreListEl.appendChild(listDivEl);
-        highScoreListEl.appendChild(scoreListEl);
-    }
-    goBackBtn.addEventListener("click", quizStart);
 
 }
 startBtn.onclick = quizTimer;
