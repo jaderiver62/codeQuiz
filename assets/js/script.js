@@ -238,7 +238,7 @@ function displayHighScoreList() {
     endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ul id='high-score-list' class='high-score-list'></ul></h3><button id='go-back' onClick='window.location.reload();' class='go-back'> Go Back </button><button id='clear-scores' class='clear-scores' onclick='clearScoresHandler()'>Clear high scores</button > ";
     var highScoreListEl = document.querySelector("#high-score-list");
     theList.sort(function(scoreA, scoreB) {
-        return scoreA.scoreNumber - scoreB.scoreNumber
+        return scoreB.scoreNumber - scoreA.scoreNumber
     });
 
     for (var i = 0; i < theList.length; i++) {
