@@ -216,10 +216,11 @@ var submitNameHandler = function(event) {
     resultDivEl.innerHTML = "";
     /*    endDivEl.setAttribute("style", " color: green; font-size:2rem;  text-align: center;");
         endDivEl.innerHTML = inputResult;*/
+    var timeArray = timerEl.textContent.split(" ");
+    var scoreTimeEl = parseInt(timeArray[1]);
     var scoreObj = {
         scoreName: inputResult,
-        scoreNumber: score,
-        time: timerEl.textContent
+        scoreNumber: scoreTimeEl
     };
     theList.push(scoreObj);
     saveScore();
@@ -236,7 +237,9 @@ function displayHighScoreList() {
     var tab = "    ";
     endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ul id='high-score-list' class='high-score-list'></ul></h3><button id='go-back' onClick='window.location.reload();' class='go-back'> Go Back </button><button id='clear-scores' class='clear-scores' onclick='clearScoresHandler()'>Clear high scores</button > ";
     var highScoreListEl = document.querySelector("#high-score-list");
-
+    theList.sort(function(scoreA, scoreB) {
+        return scoreA.scoreNumber - scoreB.scoreNumber
+    });
 
     for (var i = 0; i < theList.length; i++) {
 
@@ -247,8 +250,7 @@ function displayHighScoreList() {
         listDivEl.setAttribute("style", "padding: 10px 20px; background: rgb(201, 187, 221);");
         var nameRecordEl = theList[i].scoreName;
         var scoreRecordEl = theList[i].scoreNumber;
-        var scoreTime = theList[i].time;
-        listDivEl.innerHTML = visualIndex + ".  " + nameRecordEl + tab + "-" + tab + scoreRecordEl + tab + "-" + tab + scoreTime;
+        listDivEl.innerHTML = visualIndex + ".  " + nameRecordEl + tab + "-" + tab + scoreRecordEl;
         scoreListEl.appendChild(listDivEl);
         highScoreListEl.appendChild(scoreListEl);
     }
