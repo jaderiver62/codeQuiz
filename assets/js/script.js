@@ -8,7 +8,7 @@ var link = document.getElementById("scores-link");
 
 var index = 0;
 var score = 0;
-var isWrong = false;
+
 
 var theList = [];
 var myQuestions = [{
@@ -143,7 +143,7 @@ var quizStart = function() {
 
 function quizTimer() {
 
-    var timeRemaining = 60;
+    var timeRemaining = 70;
     var timeInterval = setInterval(function() {
         timerEl.textContent = "Time: " + timeRemaining;
         if (timeRemaining > 0 && index < myQuestions.length) {
@@ -165,6 +165,7 @@ function quizTimer() {
 
 
 function checkAnswerHandler(event) {
+    var isWrong = false;
     event.preventDefault();
     var selectedAnswer = event.target.getAttribute("value");
     var correctAnswer = myQuestions[index].answer;
