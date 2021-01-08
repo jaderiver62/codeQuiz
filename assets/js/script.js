@@ -8,7 +8,7 @@ var link = document.getElementById("scores-link");
 
 var index = 0;
 var score = 0;
-
+var isWrong = false;
 
 var theList = [];
 var myQuestions = [{
@@ -66,10 +66,24 @@ var myQuestions = [{
     }, {
         currentQuestion: "What is a valid way to read numbers from a string in Javascript?",
         a: "var myString = string.parsify(numbers);",
-        b: "var numbers = string.split('numbers')",
+        b: "var numbers = string.split('numbers');",
         c: "var numbers = parseInt(string);",
         d: "var numbers = findNum(string);",
         answer: "var numbers = parseInt(string);"
+    }, {
+        currentQuestion: "What are variables used for in JavaScript Programs?",
+        a: "Storing numbers, dates, or other values",
+        b: "Varying randomly",
+        c: "Causing high-school algebra flashbacks",
+        d: "None of the above",
+        answer: "Storing numbers, dates, or other values"
+    }, {
+        currentQuestion: " _____ JavaScript statements embedded in an HTML page can respond to user events such as mouse-clicks, form input, and page navigation.",
+        a: "Server-side",
+        b: "Client-side",
+        c: "Local",
+        d: "Native",
+        answer: "Storing numbers, dates, or other values"
     }
 ];
 
@@ -143,7 +157,7 @@ var quizStart = function() {
 
 function quizTimer() {
 
-    var timeRemaining = 70;
+    var timeRemaining = 60;
     var timeInterval = setInterval(function() {
         timerEl.textContent = "Time: " + timeRemaining;
         if (timeRemaining > 0 && index < myQuestions.length) {
@@ -165,7 +179,7 @@ function quizTimer() {
 
 
 function checkAnswerHandler(event) {
-    var isWrong = false;
+    isWrong = false;
     event.preventDefault();
     var selectedAnswer = event.target.getAttribute("value");
     var correctAnswer = myQuestions[index].answer;
