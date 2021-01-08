@@ -1,12 +1,10 @@
 var startBtn = document.getElementById("start-btn");
 
-
 var pageContentEl = document.querySelector("#page-content");
-var highScoresLinkEl = document.querySelector("#scores");
 var timerEl = document.querySelector("#timer");
 var resultDivEl = document.querySelector("#result-div");
 var endDivEl = document.querySelector("#end-div");
-
+var link = document.getElementById("scores-link");
 
 var index = 0;
 var score = 0;
@@ -51,15 +49,36 @@ var myQuestions = [{
         c: "A string",
         d: "An array",
         answer: "An integer"
+    }, {
+        currentQuestion: "?",
+        a: "?",
+        b: "?",
+        c: "?",
+        d: "?",
+        answer: "?"
+    }, {
+        currentQuestion: "?",
+        a: "?",
+        b: "?",
+        c: "?",
+        d: "?",
+        answer: "?"
+    }, {
+        currentQuestion: "?",
+        a: "?",
+        b: "?",
+        c: "?",
+        d: "?",
+        answer: "?"
     }
 ];
 
 
 
-var quizStart = function(event) {
+var quizStart = function() {
+    pageContentEl.innerHTML = "";
     if (index < myQuestions.length) {
-        pageContentEl.innerHTML = "";
-        event.preventDefault();
+
         var pageFormEl = document.createElement("div");
         pageFormEl.className = "question-content";
         var questionText = document.createTextNode(myQuestions[index].currentQuestion);
@@ -68,8 +87,8 @@ var quizStart = function(event) {
         pageFormEl.setAttribute("style", "font-size: 2.2rem; font-weight: bold;");
         var listEl = document.createElement("UL");
         listEl.setAttribute("style", "list-style-type:none;");
-        var listItemEl = document.createElement("LI");
 
+        var listItemEl = document.createElement("LI");
         var buttonEl = document.createElement("button");
         buttonEl.textContent = "1.  " + myQuestions[index].a;
         buttonEl.setAttribute("index-number", index);
@@ -129,7 +148,7 @@ function quizTimer() {
         timerEl.textContent = "Time: " + timeRemaining;
         if (timeRemaining > 0 && index < myQuestions.length) {
             if (isWrong) {
-                timeRemaining = timeRemaining - 4;
+                timeRemaining = timeRemaining - 10;
             } else {
                 timeRemaining--;
             }
@@ -197,15 +216,54 @@ var submitNameHandler = function(event) {
     resultDivEl.innerHTML = "";
     /*    endDivEl.setAttribute("style", " color: green; font-size:2rem;  text-align: center;");
         endDivEl.innerHTML = inputResult;*/
+    var timeArray = timerEl.textContent.split(" ");
+    var scoreTimeEl = parseInt(timeArray[1]);
     var scoreObj = {
         scoreName: inputResult,
-        scoreNumber: score,
-        time: timerEl.textContent
+        scoreNumber: scoreTimeEl
     };
     theList.push(scoreObj);
     saveScore();
 
 }
+
+
+function displayHighScoreList() {
+    pageContentEl.style.display = 'none';
+    timerEl.style.display = 'none';
+    document.getElementById("scores-link").style.display = 'none';
+
+
+    var tab = "    ";
+    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ul id='high-score-list' class='high-score-list'></ul></h3><button id='go-back' onClick='window.location.reload();' class='go-back'> Go Back </button><button id='clear-scores' class='clear-scores' onclick='clearScoresHandler()'>Clear high scores</button > ";
+    var highScoreListEl = document.querySelector("#high-score-list");
+    theList.sort(function(scoreA, scoreB) {
+        return scoreA.scoreNumber - scoreB.scoreNumber
+    });
+
+    for (var i = 0; i < theList.length; i++) {
+
+        var scoreListEl = document.createElement("LI");
+        scoreListEl.className = "score-el";
+        var visualIndex = (i + 1);
+        var listDivEl = document.createElement("div");
+        listDivEl.setAttribute("style", "padding: 10px 20px; background: rgb(201, 187, 221);");
+        var nameRecordEl = theList[i].scoreName;
+        var scoreRecordEl = theList[i].scoreNumber;
+        listDivEl.innerHTML = visualIndex + ".  " + nameRecordEl + tab + "-" + tab + scoreRecordEl;
+        scoreListEl.appendChild(listDivEl);
+        highScoreListEl.appendChild(scoreListEl);
+    }
+
+}
+
+var clearScoresHandler = function() {
+    localStorage.clear();
+    theList = [];
+    saveScore();
+    displayHighScoreList();
+}
+
 
 
 function saveScore() {
@@ -225,24 +283,6 @@ function loadScores() {
     theList = JSON.parse(savedScores);
     console.log(theList);
 
-}
-
-function displayHighScoreList() {
-    pageContentEl.style.display = 'none';
-
-
-    var tab = "    ";
-    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><div id='high-score-list' class='high-score-list'></div></h3>";
-    var highScoreListEl = document.querySelector("#high-score-list");
-    for (var i = 0; i < theList.length; i++) {
-        var scoreEl = document.createElement("ol");
-        scoreEl.className = "score-el";
-        var nameRecordEl = theList[i].scoreName;
-        var scoreRecordEl = theList[i].scoreNumber;
-        var scoreTime = theList[i].time;
-        scoreEl.textContent = nameRecordEl + tab + "-" + tab + scoreRecordEl + tab + "-" + tab + scoreTime;
-        highScoreListEl.appendChild(scoreEl);
-    }
 }
 startBtn.onclick = quizTimer;
 
