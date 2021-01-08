@@ -1,5 +1,5 @@
-# <div align="center">codeQuiz
-# *:sparkles:A fun Javascript Quiz!:sparkles:</div>*
+# <div align="center">codeQuiz</div>
+# <div align="center">*:sparkles:A fun Javascript Quiz!:sparkles:*</div>
 
 
 
