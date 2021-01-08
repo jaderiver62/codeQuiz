@@ -1,5 +1,5 @@
-# codeQuiz
-# *:sparkles:A fun Javascript Quiz!:sparkles:*
+# <center>codeQuiz
+# *:sparkles:A fun Javascript Quiz!:sparkles:</center>*
 
 
 
