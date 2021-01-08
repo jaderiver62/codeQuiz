@@ -235,12 +235,11 @@ function displayHighScoreList() {
 
 
     var tab = "    ";
-    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ul id='high-score-list' class='high-score-list'></ul></h3><button id='go-back' onClick='window.location.reload();' class='go-back'> Go Back </button><button id='clear-scores' class='clear-scores' onclick='clearScoresHandler()'>Clear high scores</button > ";
+    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ul id='high-score-list' class='high-score-list'></ul><div id='buttons-high-scores' class='buttons-high-scores' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button id='go-back' onClick='window.location.reload();' class='go-back'> Go Back </button>&nbsp;&nbsp;&nbsp;  <button id='clear-scores' class='clear-scores' onclick='clearScoresHandler()'>Clear high scores</button></div></h3> ";
     var highScoreListEl = document.querySelector("#high-score-list");
     theList.sort(function(scoreA, scoreB) {
         return scoreB.scoreNumber - scoreA.scoreNumber
     });
-
     for (var i = 0; i < theList.length; i++) {
 
         var scoreListEl = document.createElement("LI");

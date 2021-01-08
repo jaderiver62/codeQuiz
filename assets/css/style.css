@@ -69,6 +69,11 @@
      background: rgb(128, 13, 112);
  }
  
+ .buttons-high-scores {
+     display: flex;
+     align-self: flex-start;
+ }
+ 
  .btn:active,
  .go-back:active,
  .start-btn:active,
