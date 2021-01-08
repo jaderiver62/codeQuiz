@@ -82,8 +82,8 @@ var myQuestions = [{
         a: "Server-side",
         b: "Client-side",
         c: "Local",
-        d: "Native",
-        answer: "Storing numbers, dates, or other values"
+        d: "None of the above",
+        answer: "Client-side"
     }
 ];
 
@@ -166,7 +166,7 @@ function quizTimer() {
             } else {
                 timeRemaining--;
             }
-        } else if (timeRemaining === 0) {
+        } else if (timeRemaining <= 0) {
             clearInterval(timeInterval);
             endQuiz();
         } else {
