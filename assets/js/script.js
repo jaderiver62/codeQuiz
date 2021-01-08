@@ -50,26 +50,26 @@ var myQuestions = [{
         d: "An array",
         answer: "An integer"
     }, {
-        currentQuestion: "?",
-        a: "?",
-        b: "?",
-        c: "?",
-        d: "?",
-        answer: "?"
+        currentQuestion: "Which of the following is true of radio buttons?",
+        a: "All radio buttons in a group should have unique names",
+        b: "All radio buttons should have the same name but unique IDs",
+        c: "To clear a radio button set it's checked property to true",
+        d: "Radio buttons control the layout settings",
+        answer: "All radio buttons should have the same name but unique IDs "
     }, {
-        currentQuestion: "?",
-        a: "?",
-        b: "?",
-        c: "?",
-        d: "?",
-        answer: "?"
+        currentQuestion: "An alert() call does which of the following?",
+        a: "Issues a print request for the current web page",
+        b: "Finds all errors on the webpage and prints them to the console.log",
+        c: "Displays a dialog box with an 'ok' and 'cancel' button",
+        d: "None of the above",
+        answer: "None of the above"
     }, {
-        currentQuestion: "?",
-        a: "?",
-        b: "?",
-        c: "?",
-        d: "?",
-        answer: "?"
+        currentQuestion: "What is a valid way to read numbers from a string in Javascript?",
+        a: "var myString = string.parsify(numbers);",
+        b: "var numbers = string.split('numbers')",
+        c: "var numbers = parseInt(string);",
+        d: "var numbers = findNum(string);",
+        answer: "var numbers = parseInt(string);"
     }
 ];
 
@@ -235,7 +235,7 @@ function displayHighScoreList() {
 
 
     var tab = "    ";
-    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ul id='high-score-list' class='high-score-list'></ul><div id='buttons-high-scores' class='buttons-high-scores' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button id='go-back' onClick='window.location.reload();' class='go-back'> Go Back </button>&nbsp;&nbsp;&nbsp;  <button id='clear-scores' class='clear-scores' onclick='clearScoresHandler()'>Clear high scores</button></div></h3> ";
+    endDivEl.innerHTML = "<h1>High scores</h1><br><h3><ul id='high-score-list' class='high-score-list'></ul></h3> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button id='go-back' onClick='window.location.reload();' class='go-back'> Go Back </button>&nbsp; &nbsp; &nbsp;<button id='clear-scores' class='clear-scores' onclick='clearScoresHandler()'>Clear high scores</button > ";
     var highScoreListEl = document.querySelector("#high-score-list");
     theList.sort(function(scoreA, scoreB) {
         return scoreB.scoreNumber - scoreA.scoreNumber
