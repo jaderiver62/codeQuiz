@@ -92,69 +92,71 @@ var myQuestions = [{
 
 
 // The below function initializes the quiz and one-by-one gives options to the user to input their selections
-var quizStart = function() {
-    pageContentEl.innerHTML = "";
-    if (index < myQuestions.length) {
+var quizStart = function(event) {
+    if (event.target.matches(".start-btn")) {
+        pageContentEl.innerHTML = "";
+        if (index < myQuestions.length) {
 
-        var pageFormEl = document.createElement("div");
-        pageFormEl.className = "question-content";
-        var questionText = document.createTextNode(myQuestions[index].currentQuestion);
-        pageFormEl.appendChild(questionText);
+            var pageFormEl = document.createElement("div");
+            pageFormEl.className = "question-content";
+            var questionText = document.createTextNode(myQuestions[index].currentQuestion);
+            pageFormEl.appendChild(questionText);
 
-        pageFormEl.setAttribute("style", "font-size: 2.2rem; font-weight: bold;");
-        var listEl = document.createElement("UL");
-        listEl.setAttribute("style", "list-style-type:none;");
+            pageFormEl.setAttribute("style", "font-size: 2.2rem; font-weight: bold;");
+            var listEl = document.createElement("UL");
+            listEl.setAttribute("style", "list-style-type:none;");
 
-        var listItemEl = document.createElement("LI");
-        var buttonEl = document.createElement("button");
-        buttonEl.textContent = "1.  " + myQuestions[index].a;
-        buttonEl.setAttribute("index-number", index);
-        buttonEl.setAttribute("value", myQuestions[index].a);
-        buttonEl.className = "btn";
-        listItemEl.appendChild(buttonEl);
-        listEl.appendChild(listItemEl);
+            var listItemEl = document.createElement("LI");
+            var buttonEl = document.createElement("button");
+            buttonEl.textContent = "1.  " + myQuestions[index].a;
+            buttonEl.setAttribute("index-number", index);
+            buttonEl.setAttribute("value", myQuestions[index].a);
+            buttonEl.className = "btn";
+            listItemEl.appendChild(buttonEl);
+            listEl.appendChild(listItemEl);
 
-        buttonEl.addEventListener("click", checkAnswerHandler);
+            buttonEl.addEventListener("click", checkAnswerHandler);
 
-        var listItemEl = document.createElement("LI");
-        var buttonEl = document.createElement("button");
-        buttonEl.textContent = "2.  " + myQuestions[index].b;
-        buttonEl.setAttribute("index-number", index);
-        buttonEl.setAttribute("value", myQuestions[index].b);
-        buttonEl.className = "btn";
-        listItemEl.appendChild(buttonEl);
-        listEl.appendChild(listItemEl);
+            var listItemEl = document.createElement("LI");
+            var buttonEl = document.createElement("button");
+            buttonEl.textContent = "2.  " + myQuestions[index].b;
+            buttonEl.setAttribute("index-number", index);
+            buttonEl.setAttribute("value", myQuestions[index].b);
+            buttonEl.className = "btn";
+            listItemEl.appendChild(buttonEl);
+            listEl.appendChild(listItemEl);
 
-        buttonEl.addEventListener("click", checkAnswerHandler);
+            buttonEl.addEventListener("click", checkAnswerHandler);
 
-        var listItemEl = document.createElement("LI");
-        var buttonEl = document.createElement("button");
-        buttonEl.textContent = "3.  " + myQuestions[index].c;
-        buttonEl.setAttribute("index-number", index);
-        buttonEl.setAttribute("value", myQuestions[index].c);
-        buttonEl.className = "btn";
-        listItemEl.appendChild(buttonEl);
-        listEl.appendChild(listItemEl);
-        buttonEl.addEventListener("click", checkAnswerHandler);
+            var listItemEl = document.createElement("LI");
+            var buttonEl = document.createElement("button");
+            buttonEl.textContent = "3.  " + myQuestions[index].c;
+            buttonEl.setAttribute("index-number", index);
+            buttonEl.setAttribute("value", myQuestions[index].c);
+            buttonEl.className = "btn";
+            listItemEl.appendChild(buttonEl);
+            listEl.appendChild(listItemEl);
+            buttonEl.addEventListener("click", checkAnswerHandler);
 
 
-        var listItemEl = document.createElement("LI");
-        var buttonEl = document.createElement("button");
-        buttonEl.textContent = "4.  " + myQuestions[index].d;
-        buttonEl.setAttribute("index-number", index);
-        buttonEl.setAttribute("value", myQuestions[index].d);
-        buttonEl.className = "btn";
-        listItemEl.appendChild(buttonEl);
-        listEl.appendChild(listItemEl);
-        buttonEl.addEventListener("click", checkAnswerHandler);
+            var listItemEl = document.createElement("LI");
+            var buttonEl = document.createElement("button");
+            buttonEl.textContent = "4.  " + myQuestions[index].d;
+            buttonEl.setAttribute("index-number", index);
+            buttonEl.setAttribute("value", myQuestions[index].d);
+            buttonEl.className = "btn";
+            listItemEl.appendChild(buttonEl);
+            listEl.appendChild(listItemEl);
+            buttonEl.addEventListener("click", checkAnswerHandler);
 
-        pageFormEl.appendChild(listEl);
-        pageContentEl.appendChild(pageFormEl);
-        // This feels a bit clunky and I am working on a more elegant and dynamic way of accompling this.
-        //(i.e. a method that takes an input and creates each question option.)
-    } else {
-        endQuiz();
-        // once we have answered all the questions in the array we end the quiz
+            pageFormEl.appendChild(listEl);
+            pageContentEl.appendChild(pageFormEl);
+            // This feels a bit clunky and I am working on a more elegant and dynamic way of accompling this.
+            //(i.e. a method that takes an input and creates each question option.)
+        } else {
+            endQuiz();
+            // once we have answered all the questions in the array we end the quiz
+        }
     }
 
 }
