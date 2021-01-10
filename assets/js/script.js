@@ -93,7 +93,7 @@ var myQuestions = [{
 
 // The below function initializes the quiz and one-by-one gives options to the user to input their selections
 var quizStart = function(event) {
-    if (event.target.matches(".start-btn")) {
+    if (event.target.matches(".start-btn") || event.target.matches(".btn")) {
         pageContentEl.innerHTML = "";
         if (index < myQuestions.length) {
 
