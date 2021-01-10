@@ -88,7 +88,7 @@ var myQuestions = [{
         answer: "Client-side"
     }
 ];
-// This ia an array that holds the questions for the quiz 
+// This is an array that holds the questions for the quiz 
 
 
 // The below function initializes the quiz and one-by-one gives options to the user to input their selections
@@ -169,7 +169,7 @@ function quizTimer() {
     var timeInterval = setInterval(function() {
         timerEl.textContent = "Time: " + timeRemaining;
         if (timeRemaining > 0 && index < myQuestions.length) {
-            // these are conditions to keep ghoing - we want the quiz to end if the user rund out of time or is the user answers all of the questions
+            // these are conditions to keep going - we want the quiz to end if the user runs out of time or is the user answers all of the questions
             if (isWrong) {
                 timeRemaining = timeRemaining - 10;
                 // penalty of 10 points for an incorrect answer
@@ -177,7 +177,7 @@ function quizTimer() {
                 timeRemaining--;
                 // the time is counting down
             }
-            // these ar conditions for the quiz ending
+            // these are conditions for the quiz ending
         } else if (timeRemaining <= 0) {
             // time runs out
             clearInterval(timeInterval);
@@ -197,7 +197,7 @@ function checkAnswerHandler(event) {
     event.preventDefault();
     var selectedAnswer = event.target.getAttribute("value");
     var correctAnswer = myQuestions[index].answer;
-    // get the selcted answer and the actual answer
+    // get the selected answer and the actual answer
     var questionResult = "";
 
     if (selectedAnswer === correctAnswer) {
@@ -232,14 +232,14 @@ function endQuiz() {
             document.getElementById("name-btn").click();
         }
     });
-    //I was having problems with my computer not letting me write in the text area nor use enter to submit.  I added this code to fix thatbundleRenderer.renderToStream
+    //I was having problems with my computer not letting me write in the text area nor use enter to submit.  I added this code to fix that.
     var nameBtn = document.getElementById("name-btn");
 
     nameBtn.addEventListener("click", submitNameHandler);
 }
 
 var submitNameHandler = function(event) {
-    // this is what heppens when the user submits their info to be saved with their score
+    // this is what happens when the user submits their info to be saved with their score
     event.preventDefault();
     var inputResult = document.getElementById("myText").value;
 
@@ -253,12 +253,12 @@ var submitNameHandler = function(event) {
     var timeArray = timerEl.textContent.split(" ");
 
     var scoreTimeEl = parseInt(timeArray[1]);
-    // remove unused part of this string to extract the numbers and parse them from string so that I can sort them!
+    // removes unused part of this string to extract the numbers and parse them from string so that I can sort them!
     var scoreObj = {
         scoreName: inputResult,
         scoreNumber: scoreTimeEl
     };
-    // this is the object i create for score listings.  I originally included the 3 of correctly answered questions, but that became obsolete.
+    // this is the object I create for score listings.  I originally included the 3 of correctly answered questions, but that became obsolete.
     theList.push(scoreObj);
     // push to my arrray
     saveScore();
